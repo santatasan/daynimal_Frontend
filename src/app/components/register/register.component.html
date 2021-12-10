@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-4 mx-auto mb-3">
+        <h3 class="mb-3">Registrarse</h3>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="username">
+                <p class="form-error" *ngIf="checkError('username', 'required')">El
+                    campo username es requerido.</p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+                <p class="form-error" *ngIf="checkError('email', 'required')">El
+                    campo email es requerido.</p>
+                <p class="form-error" *ngIf="checkError('email', 'pattern')">El
+                    campo email debe tener formato correcto.</p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control" formControlName="password">
+                <p class="form-error" *ngIf="checkError('password', 'required')">Debe introducir una contraseña.</p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Repetir contraseña</label>
+                <input type="password" class="form-control" formControlName="repeat_password">
+                <p class="form-error"
+                    *ngIf="form.hasError('passwordvalidator') && form.get('repeat_password')!.touched && !form.get('password')!.hasError('required')">
+                    Las contraseñas no coinciden.
+                </p>
+            </div>
+            <input type="submit" class="btn btn-primary mb-3" value="Regístrate" [disabled]="!form.valid">
+            <div [ngClass]="{error:error, valid:valid}" *ngIf="error || valid">{{ error ? error : valid }}</div>
+        </form>
+    </div>
+    <div class="text-center">
+        <p>¿Ya tienes una cuenta? <a [routerLink]="['/login']">Iniciar sesión</a></p>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+input.ng-valid.ng-touched {
+    border: 1px solid lightgreen;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid tomato;
+}
+
+.col-4 {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.btn {
+    width: 100%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.error, .form-error {
+    color: tomato;
+    text-shadow: 0px 0px 1px tomato;
+    font-style: italic;
+}
+
+.form-error {
+    font-size: small;
+}
+
+.valid {
+    color: lightgreen;
+    text-shadow: 0px 0px 1px lightgreen;
+    font-style: italic;
+}
