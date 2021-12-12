@@ -30,11 +30,13 @@ export class LoginComponent implements OnInit {
     try {
       const res = await this.usersService.login(this.form.value);
       localStorage.setItem('token', res.token);
+      const username = (await this.usersService.getProfile()).username;
       this.error = '';
       this.valid = 'Login correcto';
       setTimeout(() => {
         this.router.navigate(['/animals']);
         this.usersService.logged(true);
+        this.usersService.usernameChanged(username);
       }, 2500);
 
     } catch (err) {
