@@ -32,8 +32,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', res.token);
       this.error = '';
       this.valid = 'Login correcto';
-      setTimeout(() => this.router.navigate(['/animals']), 2500);
-      this.usersService.logged(true);
+      setTimeout(() => {
+        this.router.navigate(['/animals']);
+        this.usersService.logged(true);
+      }, 2500);
+
     } catch (err) {
       this.error = 'El email y/o la contraseña son incorrectos.';
     };

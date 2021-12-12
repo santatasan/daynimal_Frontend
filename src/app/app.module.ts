@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AnimalsComponent } from './components/animals/animals.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AnimalProfileComponent } from './components/animal-profile/animal-profile.component';
 
 
 
@@ -20,7 +22,9 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     AnimalsComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent,
+    AnimalProfileComponent
   ],
   imports: [
     BrowserModule,

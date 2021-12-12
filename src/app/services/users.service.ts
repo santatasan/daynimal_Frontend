@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
+import { obtainToken } from '../../environments/environment';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +18,23 @@ export class UsersService {
     this.login$ = new Subject();
   };
 
-  register(formValues: any): Promise<any> {
+  getProfile(): Promise<User> {
+    const httpOptions = obtainToken();
+    return firstValueFrom(this.httpClient.get<User>(this.baseUrl, httpOptions));
+  };
+
+  register(formValues: User): Promise<any> {
     return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}/register`, formValues));
   };
 
-  login(formValues: any): Promise<any> {
+  login(formValues: User): Promise<any> {
     return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}/login`, formValues));
   };
+
+  update(formValues: any): Promise<any> {
+    const httpOptions = obtainToken();
+    return firstValueFrom(this.httpClient.put<any>(this.baseUrl, formValues, httpOptions));
+  }
 
   logged(isLogged: boolean) {
     this.login$.next(isLogged);

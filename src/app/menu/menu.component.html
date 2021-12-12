@@ -1,1 +1,42 @@
-<p>menu works!</p>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 mb-3">
+        <div class="container">
+            <a class="navbar-brand pe-3">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div *ngIf="isLogged" class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav d-flex w-100 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/animals']" routerLinkActive="active">Mis Animales</a>
+                    </li>
+                    <div class="vr"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/agenda']" routerLinkActive="active">Agenda</a>
+                    </li>
+                    <div class="vr"></div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{username}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" [routerLink]="['/profile']">Perfil</a></li>
+                            <li><a class="dropdown-item" style="cursor:pointer" (click)="onClick()">Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="!isLogged">
+                <ul class="navbar-nav d-flex w-100 justify-content-end">
+                    <button type="button" class="btn btn-primary me-2" [routerLink]="['/login']">Iniciar Sesión</button>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/register']">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-4 mx-auto mb-3">
+<div class="row position-absolute top-50 start-50 translate-middle">
+    <div class="col-9 mx-auto mb-3">
         <h3 class="mb-3">Iniciar Sesión</h3>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
@@ -10,12 +10,13 @@
                 <label class="form-label">Contraseña</label>
                 <input type="password" class="form-control" formControlName="password">
             </div>
-            <input type="submit" class="btn btn-primary mb-3" value="Iniciar sesión">
-            <div [ngClass]="{error:error, valid:valid}" *ngIf="error || valid">{{ error ? error : valid }}</div>
+            <input type="submit" class="btn btn-primary" value="Iniciar sesión">
+            <div class="mt-3" [ngClass]="{'error':error, 'valid':valid}" *ngIf="error || valid">
+                {{ error ? error : valid}}
+            </div>
         </form>
     </div>
     <div class="text-center">
         <p>¿No tienes una cuenta? <a [routerLink]="['/register']">Regístrate</a></p>
     </div>
-
 </div>
