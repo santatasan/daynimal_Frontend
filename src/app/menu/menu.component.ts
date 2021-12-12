@@ -26,6 +26,7 @@ export class MenuComponent implements OnInit {
       this.isLogged = false;
     };
     this.usersService.loginObs().subscribe(res => this.isLogged = res);
+    this.usersService.usernameObs().subscribe(res => this.username = res);
   }
 
   onClick() {

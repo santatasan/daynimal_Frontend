@@ -11,11 +11,13 @@ export class UsersService {
 
   private baseUrl: string;
   private login$: Subject<boolean>;
+  private username$: Subject<string>;
 
   constructor(private httpClient: HttpClient) {
 
     this.baseUrl = "http://localhost:3000/api/users";
     this.login$ = new Subject();
+    this.username$ = new Subject();
   };
 
   getProfile(): Promise<User> {
@@ -43,4 +45,12 @@ export class UsersService {
   loginObs() {
     return this.login$.asObservable();
   };
+
+  usernameChanged(username: string) {
+    this.username$.next(username);
+  };
+
+  usernameObs() {
+    return this.username$.asObservable();
+  }
 };

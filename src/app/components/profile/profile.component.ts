@@ -58,6 +58,7 @@ export class ProfileComponent implements OnInit {
       this.form.reset();
       this.user = await this.usersService.getProfile();
       this.form.controls['username'].setValue(this.user.username);
+      this.usersService.usernameChanged(this.user.username);
       this.form.disable();
       this.edit = false;
       alert('Perfil actualizado.')
