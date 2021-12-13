@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Animal } from 'src/app/interfaces/animal.interface';
+import { AnimalsService } from 'src/app/services/animals.service';
 
 @Component({
   selector: 'app-animals',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimalsComponent implements OnInit {
 
-  constructor() { }
+  arrAnimals: Animal[];
 
-  ngOnInit(): void {
+  constructor(private animalsService: AnimalsService) {
+
+    this.arrAnimals = [];
   }
 
+  ngOnInit(): void {
+  };
+
+  async ngAfterViewInit() {
+    this.arrAnimals = await this.animalsService.getAll();
+  };
 }
