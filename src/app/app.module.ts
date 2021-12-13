@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AnimalsComponent } from './components/animals/animals.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AnimalProfileComponent } from './components/animal-profile/animal-profile.component';
+import { NewAnimalComponent } from './components/new-animal/new-animal.component';
 
 
 
@@ -24,7 +25,8 @@ import { AnimalProfileComponent } from './components/animal-profile/animal-profi
     MenuComponent,
     FooterComponent,
     ProfileComponent,
-    AnimalProfileComponent
+    AnimalProfileComponent,
+    NewAnimalComponent
   ],
   imports: [
     BrowserModule,

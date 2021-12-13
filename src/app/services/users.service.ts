@@ -36,7 +36,7 @@ export class UsersService {
   update(formValues: any): Promise<any> {
     const httpOptions = obtainToken();
     return firstValueFrom(this.httpClient.put<any>(this.baseUrl, formValues, httpOptions));
-  }
+  };
 
   logged(isLogged: boolean) {
     this.login$.next(isLogged);
@@ -52,5 +52,5 @@ export class UsersService {
 
   usernameObs() {
     return this.username$.asObservable();
-  }
+  };
 };

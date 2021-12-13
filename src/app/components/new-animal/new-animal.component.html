@@ -1,0 +1,150 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="overflow-visible">
+    <div class="modal fade" data-bs-backdrop="static" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo animal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="onCancel()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="" formControlName="name">
+                                <label>Nombre</label>
+                                <p class="form-error" *ngIf="checkError('name', 'required')">Debes insertar un nombre.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" formControlName="gender">
+                                    <option value="F">Hembra</option>
+                                    <option value="M">Macho</option>
+                                </select>
+                                <label>Género</label>
+                                <p class="form-error" *ngIf="checkError('gender', 'required')">Debes seleccionar un
+                                    género.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="" formControlName="specie">
+                                <label>Especie</label>
+                                <p class="form-error" *ngIf="checkError('specie', 'required')">Debes insertar una
+                                    especie animal.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="" formControlName="breed">
+                                <label>Raza</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" formControlName="size">
+                                    <option value="xs">Mini</option>
+                                    <option value="s">Pequeño</option>
+                                    <option value="m">Estándar</option>
+                                    <option value="l">Grande</option>
+                                    <option value="xl">Gigante</option>
+                                </select>
+                                <label>Tamaño</label>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="" formControlName="color">
+                                <label>Color</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" placeholder="" formControlName="weight">
+                                <label>Peso</label>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" formControlName="w_unit">
+                                    <option value="gr">Gr</option>
+                                    <option value="kg">Kg</option>
+                                </select>
+                                <label>Unidad de peso</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" formControlName="spayed">
+                                    <option value={{0}}>No</option>
+                                    <option value={{1}}>Si</option>
+                                </select>
+                                <label>¿Esterilizado?</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" formControlName="birthday">
+                                <label>Fecha nacimiento</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+        <div class="col">
+
+            <div class="input-group mb-3">
+                <input type="file" class="form-control">
+                <button class="btn btn-outline-secondary" type="button">Cargar</button>
+            </div>
+
+        </div>
+    </div> -->
+
+                    <div class="modal-footer px-0">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            (click)="onCancel()">Cancelar</button>
+                        <input type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal" value="Crear"
+                            [disabled]="!form.valid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<button type="button" class="btn btn-primary newAnimal" data-bs-toggle="modal" data-bs-target="#myModal">
+    <i class="fas fa-plus fs-2"></i>
+</button>
