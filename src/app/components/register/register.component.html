@@ -30,9 +30,6 @@
                 </p>
             </div>
             <input type="submit" class="btn btn-primary mb-3" value="Regístrate" [disabled]="!form.valid">
-            <div [ngClass]="{error:error, valid:valid}" *ngIf="error || valid">
-                {{ error ? error : valid }}
-            </div>
         </form>
     </div>
     <div class="text-center">

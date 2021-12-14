@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { msgType } from 'src/app/interfaces/messageToast.interface';
+import { ToastService } from 'src/app/services/toast.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -11,16 +13,12 @@ import { UsersService } from 'src/app/services/users.service';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  error: string;
-  valid: string;
 
-  constructor(private usersService: UsersService, private router: Router) {
+  constructor(private usersService: UsersService, private router: Router, private toastService: ToastService) {
     this.form = new FormGroup({
       email: new FormControl(),
       password: new FormControl(),
     });
-    this.error = '';
-    this.valid = '';
   }
 
   ngOnInit(): void {
@@ -30,17 +28,15 @@ export class LoginComponent implements OnInit {
     try {
       const res = await this.usersService.login(this.form.value);
       localStorage.setItem('token', res.token);
-      const username = (await this.usersService.getProfile()).username;
-      this.error = '';
-      this.valid = 'Login correcto';
+      const username = (await this.usersService.getProfile()).username!;
+      this.toastService.newToast({ text: 'Login correcto.', messageType: msgType.success });
       setTimeout(() => {
         this.router.navigate(['/animals']);
         this.usersService.logged(true);
         this.usersService.usernameChanged(username);
-      }, 2500);
-
+      }, 1000);
     } catch (err) {
-      this.error = 'El email y/o la contraseña son incorrectos.';
+      this.toastService.newToast({ text: 'El email y/o la contraseña son incorrectos.', messageType: msgType.error });
     };
   };
 };

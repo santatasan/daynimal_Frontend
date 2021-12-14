@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { msgType } from 'src/app/interfaces/messageToast.interface';
+import { ToastService } from 'src/app/services/toast.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -11,10 +13,7 @@ import { UsersService } from 'src/app/services/users.service';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
-  error: string;
-  valid: string;
-
-  constructor(private usersService: UsersService, private router: Router) {
+  constructor(private usersService: UsersService, private router: Router, private toastService: ToastService) {
 
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required]),
@@ -22,8 +21,6 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       repeat_password: new FormControl(),
     }, [this.passwordValidator]);
-    this.error = '';
-    this.valid = '';
   }
 
   ngOnInit(): void {
@@ -33,11 +30,10 @@ export class RegisterComponent implements OnInit {
     try {
       const formValue = { username: this.form.value.username, email: this.form.value.email, password: this.form.value.password };
       await this.usersService.register(formValue);
-      this.error = '';
-      this.valid = 'Usuario registrado.';
+      this.toastService.newToast({ text: 'Usuario registrado.', messageType: msgType.success });
       setTimeout(() => this.router.navigate(['/login']), 2500);
     } catch (err) {
-      this.error = 'El usuario no ha podido registrarse, modifique los datos.';
+      this.toastService.newToast({ text: 'El usuario no ha podido registrarse. Por favor, modifique los datos.', messageType: msgType.error });
     };
   };
 

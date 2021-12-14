@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { msgType } from 'src/app/interfaces/messageToast.interface';
 import { User } from 'src/app/interfaces/user.interface';
+import { ToastService } from 'src/app/services/toast.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -14,7 +16,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   edit: boolean;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService, private toastService: ToastService) {
 
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.maxLength(10)]),
@@ -24,7 +26,7 @@ export class ProfileComponent implements OnInit {
       repeat_password: new FormControl(),
     });
 
-    this.user = { username: '', email: '', password: '', id: 0 };
+    this.user = { email: '', password: '' };
     this.edit = false;
   };
 
@@ -38,12 +40,12 @@ export class ProfileComponent implements OnInit {
     this.form.disable();
     this.form.controls['check_pass'].valueChanges.subscribe(value => {
       if (value) {
-        this.setValidatorRequired('last_password', Validators.required);
-        this.setValidatorRequired('password', Validators.required);
+        this.setValidator('last_password', Validators.required);
+        this.setValidator('password', Validators.required);
         this.form.setValidators([this.passwordValidator, this.lastPasswordValidator]);
       } else {
-        this.setValidatorRequired('last_password', null);
-        this.setValidatorRequired('password', null);
+        this.setValidator('last_password', null);
+        this.setValidator('password', null);
         this.form.get('password')!.setErrors(null);
         this.form.get('repeat_password')!.setErrors(null);
         this.form.removeValidators(this.passwordValidator);
@@ -54,16 +56,16 @@ export class ProfileComponent implements OnInit {
 
   async onSubmit() {
     try {
-      (this.form.value.check_pass) ? await this.usersService.update({ ...this.form.value, email: this.user.email }) : await this.usersService.update({ ...this.form.value, password: this.user.password, email: this.user.email });
+      (this.form.value.check_pass) ? await this.usersService.update(this.form.value) : await this.usersService.update({ ...this.form.value, password: this.user.password });
       this.form.reset();
+      this.form.disable();
       this.user = await this.usersService.getProfile();
       this.form.controls['username'].setValue(this.user.username);
-      this.usersService.usernameChanged(this.user.username);
-      this.form.disable();
+      this.usersService.usernameChanged(this.user.username!);
       this.edit = false;
-      alert('Perfil actualizado.')
+      this.toastService.newToast({ text: 'Usuario actualizado.', messageType: msgType.success });
     } catch (err: any) {
-      alert('El perfil no se ha actualizado. Por favor revisa los datos introducidos.');
+      this.toastService.newToast({ text: 'El usuario no ha podido actualizarse. Por favor revisa los datos introducidos.', messageType: msgType.error });
     }
   };
 
@@ -74,6 +76,7 @@ export class ProfileComponent implements OnInit {
 
   onCancel() {
     this.form.reset();
+    this.form.disable();
     this.form.controls['username'].setValue(this.user.username);
     this.edit = false;
   };
@@ -114,9 +117,11 @@ export class ProfileComponent implements OnInit {
     };
   };
 
-  setValidatorRequired(controlName: string, validator: any) {
+  setValidator(controlName: string, validator: any) {
 
     this.form.controls[controlName].setValidators(validator);
     this.form.controls[controlName].updateValueAndValidity();
   };
+
+  //TODO Meter un modal, boton y funcionalidad para eliminar un usuario.
 };

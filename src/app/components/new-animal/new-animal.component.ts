@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { msgType } from 'src/app/interfaces/messageToast.interface';
 import { AnimalsService } from 'src/app/services/animals.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-new-animal',
@@ -10,8 +12,9 @@ import { AnimalsService } from 'src/app/services/animals.service';
 export class NewAnimalComponent implements OnInit {
 
   form: FormGroup;
+  @Output() newAnimal: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private animalsService: AnimalsService) {
+  constructor(private animalsService: AnimalsService, private toastService: ToastService) {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -34,10 +37,11 @@ export class NewAnimalComponent implements OnInit {
   async onSubmit() {
     try {
       await this.animalsService.create(this.form.value);
-      alert("Animal registrado");
+      this.toastService.newToast({ text: 'El animal ha sido registrado.', messageType: msgType.success });
+      this.newAnimal.emit(true);
       this.onCancel();
     } catch (err: any) {
-      alert(err.error.error);
+      this.toastService.newToast({ text: 'El animal ya existe.', messageType: msgType.error });
       this.onCancel();
     }
   };

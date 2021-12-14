@@ -1,14 +1,14 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="overflow-visible">
-    <div class="modal fade" data-bs-backdrop="static" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo animal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        (click)="onCancel()"></button>
-                </div>
-                <div class="modal-body">
+<div class="modal fade" data-bs-backdrop="static" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo animal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="onCancel()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="overflow-visible">
                     <div class="row">
                         <div class="col-sm-6">
 
@@ -121,29 +121,34 @@
 
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
 
-                    <!-- <div class="row">
-        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="" formControlName="image">
+                                <label>URL Imagen</label>
+                            </div>
 
-            <div class="input-group mb-3">
-                <input type="file" class="form-control">
-                <button class="btn btn-outline-secondary" type="button">Cargar</button>
-            </div>
-
-        </div>
-    </div> -->
-
-                    <div class="modal-footer px-0">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                            (click)="onCancel()">Cancelar</button>
-                        <input type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal" value="Crear"
-                            [disabled]="!form.valid">
+                        </div>
                     </div>
-                </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                (click)="onCancel()">Cancelar</button>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Crear"
+                                [disabled]="!form.valid">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</div>
+
 
 <button type="button" class="btn btn-primary newAnimal" data-bs-toggle="modal" data-bs-target="#myModal">
     <i class="fas fa-plus fs-2"></i>

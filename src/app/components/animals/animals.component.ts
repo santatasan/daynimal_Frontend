@@ -15,11 +15,11 @@ export class AnimalsComponent implements OnInit {
 
     this.arrAnimals = [];
   }
-
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.arrAnimals = await this.animalsService.getAll();
   };
 
-  async ngAfterViewInit() {
-    this.arrAnimals = await this.animalsService.getAll();
+  async onNewAnimal($event: boolean): Promise<void> {
+    if ($event) this.arrAnimals = await this.animalsService.getAll();
   };
 }

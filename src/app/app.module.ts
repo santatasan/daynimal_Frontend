@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AnimalProfileComponent } from './components/animal-profile/animal-profile.component';
 import { NewAnimalComponent } from './components/new-animal/new-animal.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 
 
@@ -26,7 +27,8 @@ import { NewAnimalComponent } from './components/new-animal/new-animal.component
     FooterComponent,
     ProfileComponent,
     AnimalProfileComponent,
-    NewAnimalComponent
+    NewAnimalComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.username = (await this.usersService.getProfile()).username;
+      this.username = (await this.usersService.getProfile()).username!;
       this.isLogged = true;
     } catch (err: any) {
       this.isLogged = false;
@@ -30,7 +30,7 @@ export class MenuComponent implements OnInit {
   }
 
   onClick() {
-    const sure = confirm('¿Seguro que quieres cerrar la sesión?');
+    const sure = confirm('¿Seguro que quieres cerrar la sesión?'); //TODO cambiar esto por un modal?
     if (sure) {
       localStorage.removeItem('token');
       this.usersService.logged(false);
