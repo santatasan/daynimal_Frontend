@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimalProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  };
 
   ngOnInit(): void {
-  }
+  };
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { msgType } from 'src/app/interfaces/messageToast.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { ToastService } from 'src/app/services/toast.service';
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   edit: boolean;
 
-  constructor(private usersService: UsersService, private toastService: ToastService) {
+  constructor(private usersService: UsersService, private toastService: ToastService, private router: Router) {
 
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.maxLength(10)]),
@@ -81,6 +82,21 @@ export class ProfileComponent implements OnInit {
     this.edit = false;
   };
 
+  async onDelete() {
+    const sure = confirm('¿Seguro que quieres eliminar tu usuario?'); //TODO cambiar esto por un modal?
+    if (sure) {
+      try {
+        await this.usersService.delete();
+        this.toastService.newToast({ text: 'Usuario eliminado.', messageType: msgType.success });
+        localStorage.removeItem('token');
+        this.usersService.logged(false);
+        this.router.navigate(['/login']);
+      } catch (err: any) {
+        this.toastService.newToast({ text: 'El usuario no ha podido eliminarse.', messageType: msgType.error });
+      }
+    };
+  }
+
   checkError(controlName: string, error: string): boolean {
     return this.form.get(controlName)!.hasError(error) && this.form.get(controlName)!.touched;
   };
@@ -122,6 +138,4 @@ export class ProfileComponent implements OnInit {
     this.form.controls[controlName].setValidators(validator);
     this.form.controls[controlName].updateValueAndValidity();
   };
-
-  //TODO Meter un modal, boton y funcionalidad para eliminar un usuario.
 };

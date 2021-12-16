@@ -84,8 +84,14 @@
                         <div class="col-sm-6">
 
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" placeholder="" formControlName="weight">
+                                <input type="number" max="999.99" min="0.01" step="0.01" class="form-control"
+                                    placeholder="" formControlName="weight">
                                 <label>Peso</label>
+                                <p class="form-error"
+                                    *ngIf="checkError('weight', 'pattern') || checkError('weight', 'required')">El
+                                    peso debe estar entre 0.01 y
+                                    999.99.
+                                </p>
                             </div>
 
                         </div>
@@ -117,6 +123,9 @@
                             <div class="form-floating mb-3">
                                 <input type="date" class="form-control" formControlName="birthday">
                                 <label>Fecha nacimiento</label>
+                                <p class="form-error" *ngIf="checkError('birthday', 'required')">Debes insertar un
+                                    nombre.
+                                </p>
                             </div>
 
                         </div>

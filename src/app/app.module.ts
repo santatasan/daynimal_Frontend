@@ -12,8 +12,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AnimalProfileComponent } from './components/animal-profile/animal-profile.component';
-import { NewAnimalComponent } from './components/new-animal/new-animal.component';
+import { NewAnimalComponent } from './components/animals/new-animal/new-animal.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { SidebarComponent } from './components/animal-profile/sidebar/sidebar.component';
+import { InfoComponent } from './components/animal-profile/info/info.component';
 
 
 
@@ -28,7 +30,9 @@ import { ToastComponent } from './components/toast/toast.component';
     ProfileComponent,
     AnimalProfileComponent,
     NewAnimalComponent,
-    ToastComponent
+    ToastComponent,
+    SidebarComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

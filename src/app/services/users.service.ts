@@ -38,6 +38,11 @@ export class UsersService {
     return firstValueFrom(this.httpClient.put<any>(this.baseUrl, formValues, httpOptions));
   };
 
+  delete(): Promise<any> {
+    const httpOptions = obtainToken();
+    return firstValueFrom(this.httpClient.delete<any>(this.baseUrl, httpOptions));
+  };
+
   logged(isLogged: boolean) {
     this.login$.next(isLogged);
   };

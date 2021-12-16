@@ -62,14 +62,24 @@
                         </p>
                     </div>
                 </div>
+
+                <hr>
+
                 <button *ngIf="edit" class="btn btn-danger me-2 ms-auto" (click)="onCancel()">Cancelar</button>
                 <input *ngIf="edit" type="submit" class="btn btn-primary ms-auto" value="Guardar cambios"
                     [disabled]="!form.valid">
             </form>
-            <button *ngIf="!edit" class="d-flex btn btn-primary edit" (click)="onClick()">
-                <i class="fas fa-pencil-alt my-auto me-2"></i>
-                <p class="buttonEditText m-0">Editar</p>
-            </button>
+            <div *ngIf="!edit" class="d-flex justify-content-between">
+                <button class="d-flex btn btn-primary" (click)="onClick()">
+                    <i class="fas fa-pencil-alt my-auto me-2"></i>
+                    Editar
+                </button>
+                <button class="btn btn-danger" (click)="onDelete()">
+                    <i class="fas fa-trash-can my-auto me-2"></i>
+                    Eliminar
+                </button>
+            </div>
+
         </div>
     </div>
 </div>

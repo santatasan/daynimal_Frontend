@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       const formValue = { username: this.form.value.username, email: this.form.value.email, password: this.form.value.password };
       await this.usersService.register(formValue);
       this.toastService.newToast({ text: 'Usuario registrado.', messageType: msgType.success });
-      setTimeout(() => this.router.navigate(['/login']), 2500);
+      this.router.navigate(['/login']);
     } catch (err) {
       this.toastService.newToast({ text: 'El usuario no ha podido registrarse. Por favor, modifique los datos.', messageType: msgType.error });
     };

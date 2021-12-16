@@ -1,0 +1,11 @@
+.form-control, .form-select {
+    border: 0;
+    border-bottom: 1px solid grey;
+    border-radius: 0;
+}
+
+.form-control:disabled, .form-select:disabled {
+    background-color: transparent;
+    border: 0;
+    background-image: none;
+}

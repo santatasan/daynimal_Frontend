@@ -1,0 +1,150 @@
+<div class="container-fluid p-3 bg-white">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="overflow-visible">
+        <div class="row">
+            <h1 class="mb-3">Perfil</h1>
+
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="name">
+                    <label>Nombre</label>
+                    <p class="form-error" *ngIf="checkError('name', 'required')">Debes insertar un nombre.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" formControlName="gender">
+                        <option value="F">Hembra</option>
+                        <option value="M">Macho</option>
+                    </select>
+                    <label>Género</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="specie">
+                    <label>Especie</label>
+                    <p class="form-error" *ngIf="checkError('specie', 'required')">Debes insertar una
+                        especie animal.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="breed">
+                    <label>Raza</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" formControlName="size">
+                        <option value="xs">Mini</option>
+                        <option value="s">Pequeño</option>
+                        <option value="m">Estándar</option>
+                        <option value="l">Grande</option>
+                        <option value="xl">Gigante</option>
+                    </select>
+                    <label>Tamaño</label>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="color">
+                    <label>Color</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <input type="number" max="999.99" min="0.01" step="0.01" class="form-control" placeholder=""
+                        formControlName="weight">
+                    <label>Peso</label>
+                    <p class="form-error" *ngIf="checkError('weight', 'pattern') || checkError('weight', 'required')">El
+                        peso debe estar entre 0.01 y
+                        999.99.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" formControlName="w_unit">
+                        <option value="gr">Gr</option>
+                        <option value="kg">Kg</option>
+                    </select>
+                    <label>Unidad de peso</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" formControlName="spayed">
+                        <option value={{0}}>No</option>
+                        <option value={{1}}>Si</option>
+                    </select>
+                    <label>¿Esterilizado?</label>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" formControlName="birthday">
+                    <label>Fecha nacimiento</label>
+                    <p class="form-error" *ngIf="checkError('birthday', 'required')">Debes insertar un nombre.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="edit" class="row">
+            <div class="col">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="image">
+                    <label>URL Imagen</label>
+                </div>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <button *ngIf="edit" class="btn btn-danger me-2 ms-auto" (click)="onCancel()">Cancelar</button>
+        <input *ngIf="edit" type="submit" class="btn btn-primary ms-auto" value="Guardar cambios"
+            [disabled]="!form.valid">
+
+    </form>
+    <div *ngIf="!edit" class="d-flex justify-content-between">
+        <button class="d-flex btn btn-primary" (click)="onClick()">
+            <i class="fas fa-pencil-alt my-auto me-2"></i>
+            Editar
+        </button>
+        <button class="btn btn-danger" (click)="onDelete()">
+            <i class="fas fa-trash-can my-auto me-2"></i>
+            Eliminar
+        </button>
+    </div>
+</div>

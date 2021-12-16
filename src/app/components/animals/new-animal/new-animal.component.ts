@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { msgType } from 'src/app/interfaces/messageToast.interface';
-import { AnimalsService } from 'src/app/services/animals.service';
-import { ToastService } from 'src/app/services/toast.service';
+import { msgType } from '../../../interfaces/messageToast.interface';
+import { AnimalsService } from '../../../services/animals.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-new-animal',
@@ -23,10 +23,10 @@ export class NewAnimalComponent implements OnInit {
       breed: new FormControl(),
       size: new FormControl('m'),
       color: new FormControl(),
-      weight: new FormControl(),
+      weight: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[1-9])\d{1,3}(?:\.\d{1,2})?$/)]),
       w_unit: new FormControl('kg'),
       spayed: new FormControl(0),
-      birthday: new FormControl(),
+      birthday: new FormControl('', [Validators.required]),
       image: new FormControl(),
     });
   }
@@ -41,8 +41,7 @@ export class NewAnimalComponent implements OnInit {
       this.newAnimal.emit(true);
       this.onCancel();
     } catch (err: any) {
-      this.toastService.newToast({ text: 'El animal ya existe.', messageType: msgType.error });
-      this.onCancel();
+      this.toastService.newToast({ text: 'Ya existe un animal con ese nombre y género.', messageType: msgType.error });
     }
   };
 
@@ -54,10 +53,10 @@ export class NewAnimalComponent implements OnInit {
       breed: new FormControl(),
       size: new FormControl('m'),
       color: new FormControl(),
-      weight: new FormControl(),
+      weight: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[1-9])\d{1,3}(?:\.\d{1,2})?$/)]),
       w_unit: new FormControl('kg'),
       spayed: new FormControl(0),
-      birthday: new FormControl(),
+      birthday: new FormControl('', [Validators.required]),
       image: new FormControl(),
     });
   }

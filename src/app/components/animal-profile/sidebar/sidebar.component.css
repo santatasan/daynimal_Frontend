@@ -1,0 +1,51 @@
+.container-fluid {
+    background-color: white;
+    margin-top: 10px;
+    height: 80vh;
+}
+
+.container-fluid>div {
+    border-bottom: 1px solid lightgrey;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    font-size: 100%;
+    font-weight: 300;
+    text-decoration: none;
+    color: orange;
+    transition: 0.5s;
+}
+
+
+i {
+    cursor: pointer;
+    font-size:150%;
+    padding: 5px 0;
+    transition: 0.5s;
+}
+
+.myLink {
+    font-size: 120%;
+    cursor: pointer;
+}
+
+.myLink:hover {
+    background-color: orangered;
+
+}
+
+.myLink:hover i, .myLink:hover a {
+    color: grey;
+    transition: 0.5s;
+}

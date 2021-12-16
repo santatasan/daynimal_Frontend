@@ -1,0 +1,43 @@
+<div
+    class="container-fluid d-flex flex-column align-content-center align-items-center justify-content-between wrapper p-0 overflow-hidden">
+    <div class="d-flex flex-column justify-content-center align-items-center p-0 w-100">
+        <img class="d-lg-none" [src]="animal.image" alt="">
+        <h2 class="d-none d-lg-block">{{animal.name}}</h2>
+        <ul class="d-none d-lg-block">
+            <li>{{(animal.gender === 'F') ? 'Hembra' : 'Macho'}}</li>
+            <li>{{animal.specie | titlecase}}</li>
+            <li>{{animal.breed | titlecase}}</li>
+        </ul>
+    </div>
+    <div class="d-flex justify-content-lg-start justify-content-center align-items-center w-100 ps-lg-3 myLink"
+        [routerLink]="['info']">
+        <i class="fas fa-paw"></i>
+        <a class="d-none d-lg-block ps-3">Perfil</a>
+    </div>
+    <div class="d-flex justify-content-lg-start justify-content-center align-items-center w-100 ps-lg-3 myLink"
+        routerLink="realtime">
+        <i class="fas fa-hands-holding"></i>
+        <a class="d-none d-lg-block ps-3">Cuidados</a>
+    </div>
+    <div class="d-flex justify-content-lg-start justify-content-center align-items-center w-100 ps-lg-3 myLink"
+        routerLink="history">
+        <i class="fas fa-eye-dropper"></i>
+        <a class="d-none d-lg-block ps-3">Desparasitaciones</a>
+    </div>
+    <div class="d-flex justify-content-lg-start justify-content-center align-items-center w-100 ps-lg-3 myLink"
+        routerLink="history">
+        <i class="fas fa-syringe"></i>
+        <a class="d-none d-lg-block ps-3">Vacunas</a>
+    </div>
+    <div class="d-flex justify-content-lg-start justify-content-center align-items-center w-100 ps-lg-3 myLink"
+        routerLink="history">
+        <i class="fas fa-user-doctor"></i>
+        <a class="d-none d-lg-block ps-3">Veterinario</a>
+    </div>
+    <div class="d-flex justify-content-lg-start justify-content-center align-items-center w-100 ps-lg-3 myLink"
+        routerLink="history">
+        <i class="fas fa-pills"></i>
+        <a class="d-none d-lg-block ps-3">Medicación</a>
+    </div>
+
+</div>
