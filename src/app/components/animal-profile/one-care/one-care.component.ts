@@ -45,4 +45,8 @@ export class OneCareComponent implements OnInit {
     return '';
   };
 
+  onClick(care: Care) {
+    this.caresService.careChange(care);
+  };
+
 };

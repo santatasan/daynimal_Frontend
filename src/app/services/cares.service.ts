@@ -10,7 +10,7 @@ import { Care } from '../interfaces/care.interface';
 export class CaresService {
 
   private baseUrl: string;
-  private care$: Subject<void>;
+  private care$: Subject<Care>;
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = "http://localhost:3000/api/cares";
@@ -27,8 +27,14 @@ export class CaresService {
     return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}/${animalId}`, formValues, httpOptions));
   };
 
-  careChange() {
-    this.care$.next();
+  update(careId: number, formValues: Care): Promise<any> {
+    const httpOptions = obtainToken();
+    formValues.id = careId;
+    return firstValueFrom(this.httpClient.put<any>(this.baseUrl, formValues, httpOptions));
+  };
+
+  careChange(care: Care) {
+    this.care$.next(care);
   };
 
   careObs() {

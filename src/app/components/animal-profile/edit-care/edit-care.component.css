@@ -1,4 +1,4 @@
-input.ng-invalid.ng-touched.form-control, select.ng-invalid.ng-touched.form-select {
+input.ng-invalid.ng-touched.form-control {
     border: 1px solid tomato;
 }
 

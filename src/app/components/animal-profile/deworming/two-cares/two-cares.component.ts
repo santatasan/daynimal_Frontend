@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Care } from 'src/app/interfaces/care.interface';
 import { msgType } from 'src/app/interfaces/messageToast.interface';
 import { CaresService } from 'src/app/services/cares.service';
@@ -37,6 +36,10 @@ export class TwoCaresComponent implements OnInit {
   lineBreaks(text: string | undefined): string { //TODO meter esto en un pipe
     if (text !== null) return text!.split('\n').join('<br>');
     return '';
+  };
+
+  onClick(care: Care) {
+    this.caresService.careChange(care);
   };
 
 }

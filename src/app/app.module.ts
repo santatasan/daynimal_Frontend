@@ -22,6 +22,7 @@ import { OneCareComponent } from './components/animal-profile/one-care/one-care.
 import { VaccinesComponent } from './components/animal-profile/vaccines/vaccines.component';
 import { DewormingComponent } from './components/animal-profile/deworming/deworming.component';
 import { TwoCaresComponent } from './components/animal-profile/deworming/two-cares/two-cares.component';
+import { EditCareComponent } from './components/animal-profile/edit-care/edit-care.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TwoCaresComponent } from './components/animal-profile/deworming/two-car
     OneCareComponent,
     VaccinesComponent,
     DewormingComponent,
-    TwoCaresComponent
+    TwoCaresComponent,
+    EditCareComponent
   ],
   imports: [
     BrowserModule,

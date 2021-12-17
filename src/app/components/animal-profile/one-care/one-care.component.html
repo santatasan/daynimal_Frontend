@@ -1,5 +1,6 @@
 <div class="container">
-    <div class="d-flex flex-wrap" *ngFor="let care of arrCare">
+    <div class="d-flex flex-wrap" *ngFor="let care of arrCare" data-bs-toggle="modal" data-bs-target="#editCare"
+        (click)="onClick(care)">
         <div class="div w-25">
             <i
                 [ngClass]="{'fa-solid fa-house-chimney': care.place === 'home', 'fas fa-user-tie': care.place === 'profesional'}"></i>
