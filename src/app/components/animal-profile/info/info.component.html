@@ -3,7 +3,7 @@
         <div class="row">
             <h1 class="mb-3">Perfil</h1>
 
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" placeholder="" formControlName="name">
@@ -13,7 +13,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <select class="form-select" formControlName="gender">
@@ -24,9 +24,7 @@
                 </div>
 
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" placeholder="" formControlName="specie">
@@ -37,7 +35,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" placeholder="" formControlName="breed">
@@ -45,9 +43,7 @@
                 </div>
 
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <select class="form-select" formControlName="size">
@@ -61,7 +57,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" placeholder="" formControlName="color">
@@ -69,9 +65,7 @@
                 </div>
 
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <input type="number" max="999.99" min="0.01" step="0.01" class="form-control" placeholder=""
@@ -84,7 +78,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <select class="form-select" formControlName="w_unit">
@@ -95,9 +89,7 @@
                 </div>
 
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <select class="form-select" formControlName="spayed">
@@ -108,19 +100,17 @@
                 </div>
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
                     <input type="date" class="form-control" formControlName="birthday">
                     <label>Fecha nacimiento</label>
-                    <p class="form-error" *ngIf="checkError('birthday', 'required')">Debes insertar un nombre.
+                    <p class="form-error" *ngIf="checkError('birthday', 'required')">Debes insertar una fecha.
                     </p>
                 </div>
 
             </div>
-        </div>
-        <div *ngIf="edit" class="row">
-            <div class="col">
+            <div *ngIf="edit" class="col-12">
 
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" placeholder="" formControlName="image">

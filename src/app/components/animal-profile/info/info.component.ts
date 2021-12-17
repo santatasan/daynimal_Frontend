@@ -42,11 +42,10 @@ export class InfoComponent implements OnInit {
     try {
       this.activatedRoute.parent!.params.subscribe(value => this.animalId = value['animalId']);
       this.animal = await this.animalsService.getById(this.animalId);
-      if (!this.animal) this.router.navigate(['/animals']);
       this.animalsService.animalChanged(this.animal);
       this.onCancel();
     } catch (err) {
-      console.log(err); //TODO Ver qué pongo aquí
+      this.router.navigate(['/animals']);
     };
   };
 

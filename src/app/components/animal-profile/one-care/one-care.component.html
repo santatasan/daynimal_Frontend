@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="d-flex flex-wrap" *ngFor="let care of arrCare">
+        <div class="div w-25">
+            <i
+                [ngClass]="{'fa-solid fa-house-chimney': care.place === 'home', 'fas fa-user-tie': care.place === 'profesional'}"></i>
+        </div>
+        <div class="div w-50 overflow-hidden" [innerHTML]='lineBreaks(care.notes)'>
+        </div>
+        <div class="div">
+            {{care.date | date: 'd/M/yy'}}
+        </div>
+    </div>
+
+</div>

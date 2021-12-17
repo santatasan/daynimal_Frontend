@@ -1,0 +1,44 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-12 d-flex">
+            <i class="fas fa-hands-holding"></i>
+            <h2>Cuidados</h2>
+        </div>
+        <hr>
+        <div class="col-12 d-flex justify-content-center">
+            <button class="btn btn bg-primary me-2" data-bs-toggle="modal" data-bs-target="#newCare">Añade un
+                cuidado</button>
+            <button class=" btn btn bg-primary">Añade un recordatorio</button>
+        </div>
+
+    </div>
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="nav-link" [routerLink]="['bath']" routerLinkActive="active">
+                <i class="fas fa-bath"></i>
+                <a class="">Baño</a>
+            </li>
+            <li class="nav-link" [routerLink]="['hair']" routerLinkActive="active">
+                <i class="fas fa-bath"></i>
+                <a class="">Pelo</a>
+            </li>
+            <li class="nav-link" [routerLink]="['ears']" routerLinkActive="active">
+                <i class="fas fa-bath"></i>
+                <a class="">Oídos</a>
+            </li>
+            <li class="nav-link" [routerLink]="['nails']" routerLinkActive="active">
+                <i class="fas fa-bath"></i>
+                <a class="">Uñas</a>
+            </li>
+            <li class="nav-link" [routerLink]="['teeth']" routerLinkActive="active">
+                <i class="fas fa-bath"></i>
+                <a class="">Dientes</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<app-new-care route="cares" [animalId]="animalId"></app-new-care>

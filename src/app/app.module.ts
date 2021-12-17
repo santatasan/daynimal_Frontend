@@ -16,7 +16,12 @@ import { NewAnimalComponent } from './components/animals/new-animal/new-animal.c
 import { ToastComponent } from './components/toast/toast.component';
 import { SidebarComponent } from './components/animal-profile/sidebar/sidebar.component';
 import { InfoComponent } from './components/animal-profile/info/info.component';
-
+import { CaresComponent } from './components/animal-profile/cares/cares.component';
+import { NewCareComponent } from './components/animal-profile/new-care/new-care.component';
+import { OneCareComponent } from './components/animal-profile/one-care/one-care.component';
+import { VaccinesComponent } from './components/animal-profile/vaccines/vaccines.component';
+import { DewormingComponent } from './components/animal-profile/deworming/deworming.component';
+import { TwoCaresComponent } from './components/animal-profile/deworming/two-cares/two-cares.component';
 
 
 @NgModule({
@@ -32,7 +37,13 @@ import { InfoComponent } from './components/animal-profile/info/info.component';
     NewAnimalComponent,
     ToastComponent,
     SidebarComponent,
-    InfoComponent
+    InfoComponent,
+    CaresComponent,
+    NewCareComponent,
+    OneCareComponent,
+    VaccinesComponent,
+    DewormingComponent,
+    TwoCaresComponent
   ],
   imports: [
     BrowserModule,
