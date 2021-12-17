@@ -13,14 +13,12 @@ import { ToastService } from 'src/app/services/toast.service';
 export class OneCareComponent implements OnInit {
 
   arrCare: Care[];
-  careChanged: boolean;
   animalId: number;
   type: string;
 
   constructor(private activatedRoute: ActivatedRoute, private caresService: CaresService, private toastService: ToastService) {
 
     this.arrCare = [];
-    this.careChanged = false;
     this.type = '';
     this.animalId = 0;
   };

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { msgType } from 'src/app/interfaces/messageToast.interface';
 import { CaresService } from 'src/app/services/cares.service';
 import { ToastService } from 'src/app/services/toast.service';
@@ -16,7 +15,7 @@ export class NewCareComponent implements OnInit {
   @Input() animalId: number;
   @Input() route: string;
 
-  constructor(private caresService: CaresService, private toastService: ToastService, private activatedRoute: ActivatedRoute) {
+  constructor(private caresService: CaresService, private toastService: ToastService) {
 
     this.form = new FormGroup({
       type: new FormControl('', [Validators.required]),

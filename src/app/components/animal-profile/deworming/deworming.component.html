@@ -1,19 +1,28 @@
 <div class="container-fluid ">
     <div class="row">
         <div class="col-12 d-flex">
-            <i class="fas fa-syringe"></i>
-            <h2>Desparasitaciones</h2>
+            <i class="fas fa-eye-dropper"></i>
+            <h2>Desparasitación</h2>
         </div>
         <hr>
         <div class="col-12 d-flex justify-content-center">
-            <button class="btn btn bg-primary me-2" data-bs-toggle="modal" data-bs-target="#newCare">Añade un
-                cuidado</button>
+            <button class="btn btn bg-primary me-2" data-bs-toggle="modal" data-bs-target="#newCare">Nueva
+                desparasitación</button>
             <button class=" btn btn bg-primary">Añade un recordatorio</button>
         </div>
 
     </div>
     <div class="row">
-        <app-one-care></app-one-care>
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <h3>Externa</h3>
+            <hr>
+            <app-two-cares type="external" [animalId]="animalId"></app-two-cares>
+        </div>
+        <div class="col-lg-6">
+            <h3>Interna</h3>
+            <hr>
+            <app-two-cares type="internal" [animalId]="animalId"></app-two-cares>
+        </div>
     </div>
 </div>
 
