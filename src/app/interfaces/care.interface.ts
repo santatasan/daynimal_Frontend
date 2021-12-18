@@ -5,4 +5,5 @@ export interface Care {
     notes?: string;
     place: string;
     fk_animal?: number;
+    fk_user?: number;
 };

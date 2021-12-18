@@ -6,7 +6,9 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{ (route === "cares") ? "Editar cuidado" : (route
                     ===
                     "vaccine") ? "Editar vacuna": "Editar desparasitación"}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button class="btn btn-danger ms-auto" data-bs-dismiss="modal" (click)="onDelete()">
+                    <i class="fas fa-trash-can my-auto"></i>
+                </button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="overflow-visible">

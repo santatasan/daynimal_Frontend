@@ -34,11 +34,11 @@ export class NewCareComponent implements OnInit {
   async onSubmit() {
     try {
       await this.caresService.create(this.animalId, this.form.value);
-      this.toastService.newToast({ text: 'El cuidado ha sido registrado.', messageType: msgType.success });
+      this.toastService.newToast({ text: 'Registrado con éxito.', messageType: msgType.success });
       this.caresService.careChange(this.form.value);
       this.onCancel();
     } catch (err: any) {
-      this.toastService.newToast({ text: 'No se ha podido registrar el cuidado.', messageType: msgType.error });
+      this.toastService.newToast({ text: 'Algo ha ido mal.', messageType: msgType.error });
     }
   };
 

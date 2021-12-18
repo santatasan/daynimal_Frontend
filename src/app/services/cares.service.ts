@@ -33,6 +33,11 @@ export class CaresService {
     return firstValueFrom(this.httpClient.put<any>(this.baseUrl, formValues, httpOptions));
   };
 
+  delete(careId: number): Promise<any> {
+    const httpOptions = obtainToken();
+    return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl}/${careId}`, httpOptions));
+  };
+
   careChange(care: Care) {
     this.care$.next(care);
   };
