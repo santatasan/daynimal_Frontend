@@ -44,11 +44,24 @@ export class EditCareComponent implements OnInit {
   async onSubmit() {
     try {
       await this.caresService.update(this.care.id!, this.form.value);
-      this.toastService.newToast({ text: 'El cuidado ha sido actualizado.', messageType: msgType.success });
+      this.toastService.newToast({ text: 'El registro ha sido actualizado.', messageType: msgType.success });
       this.caresService.careChange(this.care);
     } catch (err: any) {
       this.toastService.newToast({ text: 'No se ha podido registrar el cambio.', messageType: msgType.error });
     }
+  };
+
+  async onDelete() {
+    const sure = confirm('¿Estas seguro de eliminar el registro?'); //TODO cambiar esto por un modal?
+    if (sure) {
+      try {
+        await this.caresService.delete(this.care.id!);
+        this.toastService.newToast({ text: 'El registro ha sido eliminado.', messageType: msgType.success });
+        this.caresService.careChange(this.care);
+      } catch (err: any) {
+        this.toastService.newToast({ text: 'No se ha podido eliminar el registro.', messageType: msgType.error });
+      }
+    };
   };
 
   checkError(controlName: string, error: string): boolean {
