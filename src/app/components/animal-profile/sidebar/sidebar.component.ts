@@ -10,12 +10,15 @@ import { AnimalsService } from 'src/app/services/animals.service';
 export class SidebarComponent implements OnInit {
 
   animal: Animal;
+  @Input() animalId;
 
   constructor(private animalsService: AnimalsService) {
     this.animal = { name: '', gender: '', specie: '', breed: '', size: '', color: '', weight: '', w_unit: '', spayed: 0, birthday: new Date() };
+    this.animalId = 0;
   };
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.animal = await this.animalsService.getById(this.animalId);
     this.animalsService.animalObs().subscribe(res => this.animal = res);
   };
 

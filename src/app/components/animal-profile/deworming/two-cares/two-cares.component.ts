@@ -29,7 +29,11 @@ export class TwoCaresComponent implements OnInit {
       this.toastService.newToast({ text: 'No se han podido cargar los elementos', messageType: msgType.error });
     };
     this.caresService.careObs().subscribe(async () => {
-      this.arrCare = await this.caresService.getAllByType(this.animalId, this.type);
+      try {
+        this.arrCare = await this.caresService.getAllByType(this.animalId, this.type);
+      } catch (err) {
+        this.toastService.newToast({ text: 'No se han podido cargar los elementos', messageType: msgType.error });
+      };
     });
   };
 

@@ -1,9 +1,9 @@
-<div class="modal fade" data-bs-backdrop="static" id="editCare" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" data-bs-backdrop="static" id="editCare" tabindex="-1" aria-labelledby="editCareLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header justify-content-center">
-                <h5 class="modal-title" id="exampleModalLabel">{{ (route === "cares") ? "Editar cuidado" : (route
+                <h5 class="modal-title" id="editCareLabel">{{ (route === "cares") ? "Editar cuidado" : (route
                     ===
                     "vaccine") ? "Editar vacuna": "Editar desparasitación"}}</h5>
                 <button class="btn btn-danger ms-auto" data-bs-dismiss="modal" (click)="onDelete()">

@@ -1,9 +1,9 @@
-<div class="modal fade" data-bs-backdrop="static" id="newCare" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" data-bs-backdrop="static" id="newCare" tabindex="-1" aria-labelledby="newCareLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header justify-content-center">
-                <h5 class="modal-title" id="exampleModalLabel">{{ (route === "cares") ? "Nuevo cuidado" : (route ===
+                <h5 class="modal-title" id="newCareLabel">{{ (route === "cares") ? "Nuevo cuidado" : (route ===
                     "vaccine") ? "Nueva vacuna": "Nueva desparasitación"}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="onCancel()"></button>

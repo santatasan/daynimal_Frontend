@@ -23,6 +23,8 @@ import { VaccinesComponent } from './components/animal-profile/vaccines/vaccines
 import { DewormingComponent } from './components/animal-profile/deworming/deworming.component';
 import { TwoCaresComponent } from './components/animal-profile/deworming/two-cares/two-cares.component';
 import { EditCareComponent } from './components/animal-profile/edit-care/edit-care.component';
+import { VetVisitsComponent } from './components/animal-profile/vet-visits/vet-visits.component';
+import { NewVetVisitComponent } from './components/animal-profile/vet-visits/new-vet-visit/new-vet-visit.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { EditCareComponent } from './components/animal-profile/edit-care/edit-ca
     VaccinesComponent,
     DewormingComponent,
     TwoCaresComponent,
-    EditCareComponent
+    EditCareComponent,
+    VetVisitsComponent,
+    NewVetVisitComponent
   ],
   imports: [
     BrowserModule,

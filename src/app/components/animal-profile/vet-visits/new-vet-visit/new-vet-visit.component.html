@@ -1,0 +1,81 @@
+<div class="modal fade" data-bs-backdrop="static" id="newVetVisit" tabindex="-1" aria-labelledby="newVetVisitLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="newVetVisitLabel">{{(edit) ? 'Editar visita' : 'Nueva visita'}}</h5>
+                <button *ngIf="edit" class="btn btn-danger ms-auto" data-bs-dismiss="modal" (click)="onDelete()">
+                    <i class="fas fa-trash-can my-auto"></i>
+                </button>
+                <button *ngIf="!edit" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="onCancel()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="overflow-visible">
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" formControlName="vet" placeholder="">
+                                <label>Veterinario</label>
+                                <p class="form-error" *ngIf="checkError('vet', 'required')">Debes indicar un
+                                    veterinario.
+                                </p>
+                                <p class="form-error" *ngIf="checkError('vet', 'maxLength')">El veterinario no puede
+                                    tener más de 100 caracteres.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="number" max="99999.99" min="0" step="0.25" class="form-control"
+                                    placeholder="" formControlName="price">
+                                <label>Precio</label>
+                                <p class="form-error"
+                                    *ngIf="checkError('price', 'pattern') || checkError('price', 'required')">El
+                                    precio debe estar entre 0 y
+                                    99,999.99.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" formControlName="date">
+                                <label>Fecha</label>
+                                <p class="form-error" *ngIf="checkError('date', 'required')">Debes insertar una
+                                    fecha.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" maxlength="255" placeholder=""
+                                    formControlName="notes"></textarea>
+                                <label>Notas</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                (click)="onCancel()">Cancelar</button>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                value="{{(edit) ? 'Guardar cambios' : 'Crear'}}" [disabled]="!form.valid">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

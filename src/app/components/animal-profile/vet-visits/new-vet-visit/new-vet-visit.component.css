@@ -1,0 +1,45 @@
+input.ng-invalid.ng-touched.form-control, select.ng-invalid.ng-touched.form-select {
+    border: 1px solid tomato;
+}
+
+.form-error {
+    color: tomato;
+    text-shadow: 0px 0px 1px tomato;
+    font-style: italic;
+    font-size: small;
+}
+
+.form-floating > .form-control:not(:-moz-placeholder-shown) ~ label {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    height: auto;
+    padding: 0px;
+    padding: 0px 0px 0px 10px;
+    width: 100%;
+    transform: scale(0.982) translateY(0.045rem) translateX(0.1rem);
+    border-radius: 5px 0 0 0;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    height: auto;
+    padding: 0px 0px 0px 10px;
+    width: 95%;
+    transform: scale(0.982) translateY(0.045rem) translateX(0.1rem);
+    border-radius: 5px 0 0 0;
+}
+.form-floating > .form-control:-webkit-autofill ~ label {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    height: auto;
+    padding: 0px;
+    padding: 0px 0px 0px 10px;
+    width: 100%;
+    transform: scale(0.982) translateY(0.045rem) translateX(0.1rem);
+    border-radius: 5px 0 0 0;
+}

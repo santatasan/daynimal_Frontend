@@ -14,12 +14,9 @@ export class DewormingComponent implements OnInit {
     this.animalId = 0;
   }
 
-  async ngOnInit() {
-    try {
-      this.activatedRoute.parent!.params.subscribe(value => this.animalId = value['animalId']);
-    } catch (err) {
-      this.router.navigate(['/animals']);
-    };
+  ngOnInit() {
+    this.activatedRoute.parent!.params.subscribe(value => this.animalId = value['animalId']);
+    if (this.animalId === 0) this.router.navigate(['/animals']);
   };
 
 }
