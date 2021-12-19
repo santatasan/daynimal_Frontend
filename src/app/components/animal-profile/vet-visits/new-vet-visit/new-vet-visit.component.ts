@@ -21,7 +21,7 @@ export class NewVetVisitComponent implements OnInit {
   constructor(private vetVisitsService: VetVisitsService, private toastService: ToastService) {
 
     this.form = new FormGroup({
-      vet: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      vet: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9])\d{1,5}(?:\.\d{1,2})?$/)]),
       notes: new FormControl(),
@@ -59,6 +59,7 @@ export class NewVetVisitComponent implements OnInit {
         this.toastService.newToast({ text: 'El registro ha sido actualizado.', messageType: msgType.success });
         this.newVetVisit.emit(true);
       } catch (err: any) {
+        this.onCancel();
         this.toastService.newToast({ text: 'No se ha podido registrar el cambio.', messageType: msgType.error });
       }
     }

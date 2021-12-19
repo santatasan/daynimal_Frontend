@@ -4,6 +4,7 @@ import { AnimalProfileComponent } from './components/animal-profile/animal-profi
 import { CaresComponent } from './components/animal-profile/cares/cares.component';
 import { DewormingComponent } from './components/animal-profile/deworming/deworming.component';
 import { InfoComponent } from './components/animal-profile/info/info.component';
+import { MedicationsComponent } from './components/animal-profile/medications/medications.component';
 import { OneCareComponent } from './components/animal-profile/one-care/one-care.component';
 import { VaccinesComponent } from './components/animal-profile/vaccines/vaccines.component';
 import { VetVisitsComponent } from './components/animal-profile/vet-visits/vet-visits.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'deworming', component: DewormingComponent },
       { path: 'vaccines', component: VaccinesComponent },
       { path: 'vetvisits', component: VetVisitsComponent },
+      { path: 'medications', component: MedicationsComponent },
     ]
   },
   { path: '**', redirectTo: '/animals' }

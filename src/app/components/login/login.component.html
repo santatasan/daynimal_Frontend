@@ -4,11 +4,11 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" class="form-control" formControlName="email">
+                <input type="text" class="form-control" formControlName="email" maxlength="50">
             </div>
             <div class="mb-3">
                 <label class="form-label">Contraseña</label>
-                <input type="password" class="form-control" formControlName="password">
+                <input type="password" class="form-control" formControlName="password" maxlength="255">
             </div>
             <input type="submit" class="btn btn-primary" value="Iniciar sesión">
         </form>

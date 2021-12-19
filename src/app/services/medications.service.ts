@@ -2,38 +2,38 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { obtainToken } from 'src/environments/environment';
-import { VetVisit } from '../interfaces/vetVisit.interface';
+import { Medication } from '../interfaces/medication.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VetVisitsService {
+export class MedicationsService {
 
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
 
-    this.baseUrl = "http://localhost:3000/api/vetvisits";
+    this.baseUrl = "http://localhost:3000/api/medications";
   };
 
-  getAll(animalId: number): Promise<VetVisit[]> {
+  getAll(animalId: number): Promise<Medication[]> {
     const httpOptions = obtainToken();
-    return firstValueFrom(this.httpClient.get<VetVisit[]>(`${this.baseUrl}/${animalId}`, httpOptions));
+    return firstValueFrom(this.httpClient.get<Medication[]>(`${this.baseUrl}/${animalId}`, httpOptions));
   };
 
-  create(animalId: number, formValues: VetVisit): Promise<any> {
+  create(animalId: number, formValues: Medication): Promise<any> {
     const httpOptions = obtainToken();
     return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}/${animalId}`, formValues, httpOptions));
   };
 
-  update(vetVisitId: number, formValues: VetVisit): Promise<any> {
+  update(medicationId: number, formValues: Medication): Promise<any> {
     const httpOptions = obtainToken();
-    formValues.id = vetVisitId;
+    formValues.id = medicationId;
     return firstValueFrom(this.httpClient.put<any>(this.baseUrl, formValues, httpOptions));
   };
 
-  delete(vetVisitId: number): Promise<any> {
+  delete(medicationId: number): Promise<any> {
     const httpOptions = obtainToken();
-    return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl}/${vetVisitId}`, httpOptions));
+    return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl}/${medicationId}`, httpOptions));
   };
 }

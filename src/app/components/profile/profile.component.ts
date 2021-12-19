@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(private usersService: UsersService, private toastService: ToastService, private router: Router) {
 
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      username: new FormControl('', [Validators.required]),
       check_pass: new FormControl(),
       last_password: new FormControl(),
       password: new FormControl(),

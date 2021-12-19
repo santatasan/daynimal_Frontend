@@ -1,7 +1,7 @@
 <div class="container-fluid ">
     <div class="row">
         <div class="col-12 d-flex">
-            <i class="fas fa-user-doctor"></i>
+            <i class="fas fa-stethoscope"></i>
             <h2>Veterinario</h2>
         </div>
         <hr>
@@ -17,7 +17,7 @@
             <div *ngFor="let vetVisit of arrVetVisits" class="d-flex flex-wrap vetVisit" data-bs-toggle="modal"
                 data-bs-target="#newVetVisit" (click)="onClick(vetVisit)">
                 <div class="d-flex w-25">
-                    <i class="fas fa-user-doctor"></i>
+                    <i class="fas fa-stethoscope"></i>
                     <p>{{vetVisit.vet}}</p>
                 </div>
                 <div class="w-50 overflow-hidden" [innerHTML]='lineBreaks(vetVisit.notes)'>

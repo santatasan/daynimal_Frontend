@@ -4,13 +4,13 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" formControlName="username">
+                <input type="text" class="form-control" formControlName="username" maxlength="45">
                 <p class="form-error" *ngIf="checkError('username', 'required')">El
                     nombre de usuario es requerido.</p>
             </div>
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" class="form-control" formControlName="email">
+                <input type="text" class="form-control" formControlName="email" maxlength="50">
                 <p class="form-error" *ngIf="checkError('email', 'required')">El
                     campo email es requerido.</p>
                 <p class="form-error" *ngIf="checkError('email', 'pattern')">El
@@ -18,12 +18,12 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Contraseña</label>
-                <input type="password" class="form-control" formControlName="password">
+                <input type="password" class="form-control" formControlName="password" maxlength="255">
                 <p class="form-error" *ngIf="checkError('password', 'required')">Debe introducir una contraseña.</p>
             </div>
             <div class="mb-3">
                 <label class="form-label">Repetir contraseña</label>
-                <input type="password" class="form-control" formControlName="repeat_password">
+                <input type="password" class="form-control" formControlName="repeat_password" maxlength="255">
                 <p class="form-error"
                     *ngIf="form.hasError('passwordvalidator') && form.get('repeat_password')!.touched && !form.get('password')!.hasError('required')">
                     Las contraseñas no coinciden.

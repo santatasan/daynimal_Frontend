@@ -8,11 +8,9 @@
                     <label class="col-sm-5 col-form-label">Nombre de usuario</label>
                     <div class="col-sm-7">
                         <input type="text" [ngClass]="{'form-control-plaintext': !edit, 'form-control': edit}"
-                            formControlName="username">
+                            formControlName="username" maxlength="45">
                         <p class="form-error" *ngIf="checkError('username', 'required')">El
                             nombre de usuario es requerido.</p>
-                        <p class="form-error" *ngIf="checkError('username', 'maxlength')">Longitud máxima de
-                            {{form.get('username')!.errors!['maxlength'].requiredLength}} caracteres.</p>
                     </div>
                 </div>
 
@@ -33,7 +31,7 @@
                 <div *ngIf="form.value.check_pass" class="row mb-3">
                     <label class="col-sm-5 col-form-label">Contraseña antigua</label>
                     <div class="col-sm-7">
-                        <input type="password" class="form-control" formControlName="last_password">
+                        <input type="password" class="form-control" formControlName="last_password" maxlength="255">
                         <p class="form-error" *ngIf="checkError('last_password', 'required')">Debe introducir una
                             contraseña.</p>
                     </div>
@@ -42,7 +40,7 @@
                 <div *ngIf="form.value.check_pass" class="row mb-3">
                     <label class="col-sm-5 col-form-label">Nueva contraseña</label>
                     <div class="col-sm-7">
-                        <input type="password" class="form-control" formControlName="password">
+                        <input type="password" class="form-control" formControlName="password" maxlength="255">
                         <p class="form-error" *ngIf="checkError('password', 'required')">Debe introducir una contraseña.
                         </p>
                         <p class="form-error"
@@ -55,7 +53,7 @@
                 <div *ngIf="form.value.check_pass" class="row mb-3">
                     <label class="col-sm-5 col-form-label">Repetir contraseña</label>
                     <div class="col-sm-7">
-                        <input type="password" class="form-control" formControlName="repeat_password">
+                        <input type="password" class="form-control" formControlName="repeat_password" maxlength="255">
                         <p class="form-error"
                             *ngIf="form.hasError('passwordvalidator') && form.get('repeat_password')!.touched && !form.get('password')!.hasError('required')">
                             Las contraseñas no coinciden.

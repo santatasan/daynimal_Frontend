@@ -1,0 +1,53 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-12 d-flex">
+            <i class="fas fa-pills"></i>
+            <h2>Medicación</h2>
+        </div>
+        <hr>
+        <div class="col-12 d-flex justify-content-center">
+            <button class="btn btn bg-primary me-2" data-bs-toggle="modal" data-bs-target="#newMedication">Nueva
+                medicación</button>
+            <button class=" btn btn bg-primary">Añade un recordatorio</button>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" *ngFor="let medication of arrMedications, index as index">
+                <div class="accordion  overflow-hidden" id="{{index}}">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                attr.data-bs-target="#collapse{{index}}" aria-expanded="false"
+                                attr.aria-controls="collapse{{index}}">
+                                <i
+                                    [ngClass]="{'fas fa-circle': medication.finished === 0 , 'fa-solid fa-circle-check': medication.finished === 1}"></i>
+                                {{(medication.finished === 0) ? medication.name : medication.name + ' (Finalizado)' }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{index}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            attr.data-bs-parent="{{index}}">
+                            <div class="accordion-body medication" data-bs-toggle="modal"
+                                data-bs-target="#newMedication" (click)="onClick(medication)">
+                                <p><i class="fa-solid fa-capsules"></i> {{medication.dosage}}</p>
+                                <p><i class="fa-solid fa-repeat"></i>
+                                    Cada {{medication.repetition}} {{(medication.r_unit=== "hours") ? "hora/s" :
+                                    (medication.r_unit=== "days") ? "día/s" : "semana/s"}}
+                                </p>
+                                <p class="mb-0"><i class="fa-solid fa-calendar-days"></i>
+                                    {{medication.start | date:
+                                    'd/M/yy'}} - {{medication.finish | date: 'd/M/yy'}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-new-medication (newMedication)="onNewMedication($event)" [medication]="medication" [edit]="edit"
+    [animalId]="animalId">
+</app-new-medication>

@@ -6,7 +6,7 @@
             <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="" formControlName="name">
+                    <input type="text" class="form-control" placeholder="" formControlName="name" maxlength="45">
                     <label>Nombre</label>
                     <p class="form-error" *ngIf="checkError('name', 'required')">Debes insertar un nombre.
                     </p>
@@ -27,7 +27,7 @@
             <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="" formControlName="specie">
+                    <input type="text" class="form-control" placeholder="" formControlName="specie" maxlength="45">
                     <label>Especie</label>
                     <p class="form-error" *ngIf="checkError('specie', 'required')">Debes insertar una
                         especie animal.
@@ -38,7 +38,7 @@
             <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="" formControlName="breed">
+                    <input type="text" class="form-control" placeholder="" formControlName="breed" maxlength="45">
                     <label>Raza</label>
                 </div>
 
@@ -60,7 +60,7 @@
             <div class="col-sm-6">
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="" formControlName="color">
+                    <input type="text" class="form-control" placeholder="" formControlName="color" maxlength="45">
                     <label>Color</label>
                 </div>
 
@@ -113,7 +113,7 @@
             <div *ngIf="edit" class="col-12">
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="" formControlName="image">
+                    <input type="text" class="form-control" placeholder="" formControlName="image" maxlength="255">
                     <label>URL Imagen</label>
                 </div>
 

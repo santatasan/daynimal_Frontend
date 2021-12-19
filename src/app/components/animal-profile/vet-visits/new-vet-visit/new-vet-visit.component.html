@@ -17,13 +17,11 @@
                         <div class="col-12">
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" formControlName="vet" placeholder="">
+                                <input type="text" class="form-control" formControlName="vet" placeholder=""
+                                    maxlength="100">
                                 <label>Veterinario</label>
                                 <p class="form-error" *ngIf="checkError('vet', 'required')">Debes indicar un
                                     veterinario.
-                                </p>
-                                <p class="form-error" *ngIf="checkError('vet', 'maxLength')">El veterinario no puede
-                                    tener más de 100 caracteres.
                                 </p>
                             </div>
 
