@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Medication } from 'src/app/interfaces/medication.interface';
 import { msgType } from 'src/app/interfaces/messageToast.interface';
 import { MedicationsService } from 'src/app/services/medications.service';
@@ -27,7 +27,7 @@ export class NewMedicationComponent implements OnInit {
       r_unit: new FormControl('hours'),
       start: new FormControl('', [Validators.required]),
       finish: new FormControl('', [Validators.required])
-    });
+    }, [this.dateValidator]);
     this.animalId = 0;
     this.edit = false;
     this.medication = { name: '', dosage: '', repetition: 0, r_unit: '', start: new Date(), finish: new Date(), finished: 0 };
@@ -105,6 +105,25 @@ export class NewMedicationComponent implements OnInit {
       r_unit: new FormControl('hours'),
       start: new FormControl('', [Validators.required]),
       finish: new FormControl('', [Validators.required])
-    });
+    }, [this.dateValidator]);
+  };
+
+  dateValidator(form: AbstractControl) {
+    const start = form.get('start')?.value;
+    const finish = form.get('finish')?.value;
+
+    if (form.get('finish')?.hasError('required')) {
+      if (finish < start) {
+        form.get('finish')!.setErrors({ datevalidator: true, required: true });
+        return { datevalidator: true };
+      };
+      return null;
+    } else if (finish < start) {
+      form.get('finish')!.setErrors({ datevalidator: true });
+      return { datevalidator: true };
+    } else {
+      form.get('finish')!.setErrors(null);
+      return null;
+    };
   };
 }

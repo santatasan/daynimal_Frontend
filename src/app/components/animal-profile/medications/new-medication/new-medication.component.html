@@ -85,6 +85,10 @@
                                 <p class="form-error" *ngIf="checkError('finish', 'required')">Debes insertar una
                                     fecha.
                                 </p>
+                                <p class="form-error"
+                                    *ngIf="form.hasError('datevalidator') && form.get('finish')!.touched && !form.get('start')!.hasError('required') && !form.get('finish')!.hasError('required')">
+                                    La fecha de fin no puede ser menor o igual que la de inicio.
+                                </p>
                             </div>
 
                         </div>
