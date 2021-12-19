@@ -44,6 +44,8 @@ export class NewMedicationComponent implements OnInit {
       this.form.controls['r_unit'].setValue(this.medication.r_unit);
       this.form.controls['start'].setValue(this.medication.start.toString().split('T')[0]);
       this.form.controls['finish'].setValue(this.medication.finish.toString().split('T')[0]);
+      console.log(this.medication.finish)
+      console.log(this.medication.finish.toString().split('T')[0])
     };
   };
 

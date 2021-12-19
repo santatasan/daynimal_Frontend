@@ -67,8 +67,8 @@
                 <input *ngIf="edit" type="submit" class="btn btn-primary ms-auto" value="Guardar cambios"
                     [disabled]="!form.valid">
             </form>
-            <div *ngIf="!edit" class="d-flex justify-content-between">
-                <button class="d-flex btn btn-primary" (click)="onClick()">
+            <div *ngIf="!edit" class="d-flex flex-column flex-sm-row justify-content-between">
+                <button class="btn btn-primary me-sm-2 mb-2 mb-sm-0" (click)="onClick()">
                     <i class="fas fa-pencil-alt my-auto me-2"></i>
                     Editar
                 </button>
