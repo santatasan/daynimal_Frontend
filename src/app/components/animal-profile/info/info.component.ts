@@ -72,7 +72,7 @@ export class InfoComponent implements OnInit {
     this.form.controls['weight'].setValue(this.animal.weight);
     this.form.controls['w_unit'].setValue(this.animal.w_unit);
     this.form.controls['spayed'].setValue(this.animal.spayed);
-    this.form.controls['birthday'].setValue(this.animal.birthday.toString().split('T')[0]);
+    this.form.controls['birthday'].setValue(new Date(this.animal.birthday).toLocaleDateString('en-CA'));
     this.form.controls['image'].setValue(this.animal.image);
     this.form.disable();
     this.edit = false;

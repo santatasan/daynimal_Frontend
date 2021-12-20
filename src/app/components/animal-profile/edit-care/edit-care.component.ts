@@ -22,7 +22,7 @@ export class EditCareComponent implements OnInit {
 
     this.form = new FormGroup({
       type: new FormControl(this.care.type),
-      date: new FormControl(this.care.date.toString().split('T')[0], [Validators.required]),
+      date: new FormControl(new Date(this.care.date).toLocaleDateString('en-CA'), [Validators.required]),
       place: new FormControl(this.care.place),
       notes: new FormControl(this.care.notes),
     });
@@ -34,7 +34,7 @@ export class EditCareComponent implements OnInit {
       this.care = value;
       this.form = new FormGroup({
         type: new FormControl(this.care.type),
-        date: new FormControl(this.care.date.toString().split('T')[0], [Validators.required]),
+        date: new FormControl(new Date(this.care.date).toLocaleDateString('en-CA'), [Validators.required]),
         place: new FormControl(this.care.place),
         notes: new FormControl(this.care.notes),
       });

@@ -8,3 +8,7 @@ input.ng-invalid.ng-touched.form-control {
     font-style: italic;
     font-size: small;
 }
+
+.form-check input, .form-check label {
+    cursor: pointer;
+}

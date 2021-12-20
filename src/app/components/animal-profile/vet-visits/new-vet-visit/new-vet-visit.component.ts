@@ -37,7 +37,7 @@ export class NewVetVisitComponent implements OnInit {
   ngOnChanges() {
     if (this.edit) {
       this.form.controls['vet'].setValue(this.vetVisit.vet);
-      this.form.controls['date'].setValue(this.vetVisit.date.toString().split('T')[0]);
+      this.form.controls['date'].setValue(new Date(this.vetVisit.date).toLocaleDateString('en-CA'));
       this.form.controls['price'].setValue(this.vetVisit.price);
       this.form.controls['notes'].setValue(this.vetVisit.notes);
     };
