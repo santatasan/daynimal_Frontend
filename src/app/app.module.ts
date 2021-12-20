@@ -27,6 +27,7 @@ import { VetVisitsComponent } from './components/animal-profile/vet-visits/vet-v
 import { NewVetVisitComponent } from './components/animal-profile/vet-visits/new-vet-visit/new-vet-visit.component';
 import { MedicationsComponent } from './components/animal-profile/medications/medications.component';
 import { NewMedicationComponent } from './components/animal-profile/medications/new-medication/new-medication.component';
+import { NewReminderComponent } from './components/new-reminder/new-reminder.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { NewMedicationComponent } from './components/animal-profile/medications/
     VetVisitsComponent,
     NewVetVisitComponent,
     MedicationsComponent,
-    NewMedicationComponent
+    NewMedicationComponent,
+    NewReminderComponent
   ],
   imports: [
     BrowserModule,

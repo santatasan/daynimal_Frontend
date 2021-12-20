@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
       this.user = await this.usersService.getProfile();
       this.form.controls['username'].setValue(this.user.username);
     } catch (err: any) {
-      console.log(err); //TODO Ver qué pongo aquí
+      this.router.navigate(['/animals']);
     };
     this.form.disable();
     this.form.controls['check_pass'].valueChanges.subscribe(value => {

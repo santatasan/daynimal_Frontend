@@ -58,6 +58,7 @@ export class NewVetVisitComponent implements OnInit {
         await this.vetVisitsService.update(this.vetVisit.id!, this.form.value);
         this.toastService.newToast({ text: 'El registro ha sido actualizado.', messageType: msgType.success });
         this.newVetVisit.emit(true);
+        this.form.reset();
       } catch (err: any) {
         this.onCancel();
         this.toastService.newToast({ text: 'No se ha podido registrar el cambio.', messageType: msgType.error });

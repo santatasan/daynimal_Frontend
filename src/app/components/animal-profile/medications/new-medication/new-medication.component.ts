@@ -42,10 +42,8 @@ export class NewMedicationComponent implements OnInit {
       this.form.controls['dosage'].setValue(this.medication.dosage);
       this.form.controls['repetition'].setValue(this.medication.repetition);
       this.form.controls['r_unit'].setValue(this.medication.r_unit);
-      this.form.controls['start'].setValue(this.medication.start.toString().split('T')[0]);
-      this.form.controls['finish'].setValue(this.medication.finish.toString().split('T')[0]);
-      console.log(this.medication.finish)
-      console.log(this.medication.finish.toString().split('T')[0])
+      this.form.controls['start'].setValue(new Date(this.medication.start).toLocaleDateString('en-CA'));
+      this.form.controls['finish'].setValue(new Date(this.medication.finish).toLocaleDateString('en-CA'));
     };
   };
 
@@ -66,6 +64,7 @@ export class NewMedicationComponent implements OnInit {
         await this.medicationsService.update(this.medication.id!, this.form.value);
         this.toastService.newToast({ text: 'El registro ha sido actualizado.', messageType: msgType.success });
         this.newMedication.emit(true);
+        this.resetForm();
       } catch (err: any) {
         this.onCancel();
         this.toastService.newToast({ text: 'No se ha podido registrar el cambio.', messageType: msgType.error });

@@ -8,7 +8,8 @@
         <div class="col-12 d-flex justify-content-center">
             <button class="btn btn bg-primary me-2" data-bs-toggle="modal" data-bs-target="#newMedication">Nueva
                 medicación</button>
-            <button class=" btn btn bg-primary">Añade un recordatorio</button>
+            <button class=" btn btn bg-primary" data-bs-toggle="modal" data-bs-target="#newReminder">Añade un
+                recordatorio</button>
         </div>
 
     </div>
@@ -51,3 +52,4 @@
 <app-new-medication (newMedication)="onNewMedication($event)" [medication]="medication" [edit]="edit"
     [animalId]="animalId">
 </app-new-medication>
+<app-new-reminder route="medication" [arrMedications]="arrMedications" [animalId]="animalId"></app-new-reminder>

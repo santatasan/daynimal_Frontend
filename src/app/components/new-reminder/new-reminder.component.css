@@ -1,0 +1,10 @@
+input.ng-invalid.ng-touched.form-control {
+    border: 1px solid tomato;
+}
+
+.form-error {
+    color: tomato;
+    text-shadow: 0px 0px 1px tomato;
+    font-style: italic;
+    font-size: small;
+}
