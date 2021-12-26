@@ -9,6 +9,7 @@ import { OneCareComponent } from './components/animal-profile/one-care/one-care.
 import { VaccinesComponent } from './components/animal-profile/vaccines/vaccines.component';
 import { VetVisitsComponent } from './components/animal-profile/vet-visits/vet-visits.component';
 import { AnimalsComponent } from './components/animals/animals.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [NotLoggedGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [NotLoggedGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedGuard] },
+  { path: 'calendar', component: CalendarComponent, canActivate: [LoggedGuard] },
   {
     path: 'animals/:animalId', component: AnimalProfileComponent, canActivate: [LoggedGuard], children: [
       { path: '', pathMatch: 'full', redirectTo: 'info' },

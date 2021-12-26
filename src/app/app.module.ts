@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AnimalsComponent } from './components/animals/animals.component';
@@ -28,7 +27,16 @@ import { NewVetVisitComponent } from './components/animal-profile/vet-visits/new
 import { MedicationsComponent } from './components/animal-profile/medications/medications.component';
 import { NewMedicationComponent } from './components/animal-profile/medications/new-medication/new-medication.component';
 import { NewReminderComponent } from './components/new-reminder/new-reminder.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { AppComponent } from './app.component';
 
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -55,13 +63,15 @@ import { NewReminderComponent } from './components/new-reminder/new-reminder.com
     NewVetVisitComponent,
     MedicationsComponent,
     NewMedicationComponent,
-    NewReminderComponent
+    NewReminderComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
